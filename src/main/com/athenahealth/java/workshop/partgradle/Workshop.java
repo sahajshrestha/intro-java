@@ -1,6 +1,30 @@
 package com.athenahealth.java.workshop.partgradle;
 
 /**
+ * PRO-TIPS:
+ *
+ * SERIALIZATION:
+ * There is often a need to convert java objects to string and string to java. More specifically,
+ * serialization is converting the objects to byte stream so that it could be saved to a file, sent over a network,
+ * stored in a database, etc.
+ *
+ * toString is one way to convert object to String but can't convert string to object
+ * The third party app called Jackson is used for serialization
+ *
+ * Jacskon using ObjectMapper
+ * ObjectMapper is the core class to convert objects to strings and back
+ * .readValue (String, Class)
+ * .wrtieValueAsString(Object)
+ *
+ * Jackson also provides annotations. For example, classes may have properties that we don't want or need to be serialized,
+ * for example, user passwords because they should not be transmitted at all. @JsonIgnore is used in this case.
+ * @JsonIgnore String socialSecurityNumber
+ *
+ * @JsonValue(String) - Serialize with an alias name
+ */
+
+
+/**
  * TODO
  * Make a new module (File -> New -> Module)
  * Name it whatever you feel like
