@@ -9,7 +9,7 @@ package com.athenahealth.java.workshop.parta;
 public class Workshop {
     public static void main(String[] args) {
         objectCreation();
-//        equality(); // Uncomment once objectCreation is working
+        equality(); // Uncomment once objectCreation is working
         staticExample();
     }
 
@@ -21,7 +21,7 @@ public class Workshop {
      */
     public static void objectCreation() {
         PersonExample example = new PersonExample("Tyler");
-//        BetterPerson example = new BetterPerson("you!");
+        BetterPerson example2 = new BetterPerson("you!");
         example.setAge(21);
         example.setWeight(123.4);
         assert("Tyler".equals(example.getName())); // Rule of thumb: compare constants to variables
@@ -32,17 +32,26 @@ public class Workshop {
     }
 
     /**
-     * Make an equals function that compares all the properties of the BetterPerson class
+     * PRO TIPS:
+     * Reference Equality ( == ): Checks if two object references point to the same object in memory. When objects are instantiated
+     * in java using the new keyword, chunk of memory is allocated in heap.
+     *
+     * Value Equality (.equals() ): By default, equals would have been same as ==, but just to check value, we can override this.
      */
     public static void equality() {
-        PersonExample thing1 = new PersonExample("Tyler");
-        PersonExample thing2 = new PersonExample("Tyler");
-//        BetterPerson thing1 = new BetterPerson("Tyler");
-//        BetterPerson thing2 = new BetterPerson("Tyler");
+//        PersonExample thing1 = new PersonExample("Tyler");
+//        PersonExample thing2 = new PersonExample("Tyler");
+        BetterPerson thing1 = new BetterPerson("Tyler");
+        BetterPerson thing2 = new BetterPerson("Tyler");
         thing1.setAge(1);
-        thing2.setAge(2);
+        thing2.setAge(1);
         thing1.setWeight(123.4);
         thing2.setWeight(123.4);
+        if (thing1.equals(thing2)) {
+            System.out.println("Objects are equal");
+        } else {
+            System.out.println("Objects are not equal");
+        }
         assert(thing1 != thing2); // comparing objects with == compares their heap address
         assert(thing1.equals(thing2)); // This uses the equals method defined on the class... which is heap address by default
     }
